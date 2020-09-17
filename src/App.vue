@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <h2>hello</h2>
+    <h2>Internet store</h2>
     <v-main-wrapper></v-main-wrapper>
   </div>
 </template>
