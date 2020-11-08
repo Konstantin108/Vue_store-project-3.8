@@ -1,3 +1,17 @@
+.btn {
+  padding: 8px 16px;
+  background: #4d984d;
+  color: white;
+  border-radius: 4px;
+  outline: none;
+  border: 1px solid #4d984d;
+  cursor: pointer;
+  transition: 0.1s;
+}
 
+.btn:active {
+  background: white;
+  color: #4d984d;
+}
 
 /*# sourceMappingURL=styles.css.map */

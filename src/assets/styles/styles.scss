@@ -1,1 +1,17 @@
 @import 'variables.scss';
+
+.btn{
+  padding: $padding $padding*2;
+  background: $green-bg;
+  color: white;
+  border-radius: $radius;
+  outline: none;
+  border: 1px solid $green-bg;
+  cursor: pointer;
+  transition: .1s;
+}
+
+.btn:active{
+  background: white;
+  color: $green-bg;
+}
