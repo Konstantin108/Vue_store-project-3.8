@@ -1,5 +1,11 @@
 <template>
   <div class="v-catalog">
+    <v-textfield
+        v-model="model"
+        label="Placeholder"
+    >
+    </v-textfield>
+    <p>{{model}}</p>
     <router-link :to="{name: 'cart', params: {cart_data: CART}}">
       <div class="v-catalog__link_to_cart">Cart: {{ CART.length }}</div>
     </router-link>
@@ -18,16 +24,20 @@
 
 <script>
 import vCatalogItem from './v-catalog-item'
+import vTextfield from '../v-textfield'
+
 import {mapActions, mapGetters} from 'vuex'
 export default {
 name: "v-catalog",
   components:{
-    vCatalogItem
+    vCatalogItem,
+    vTextfield
   },
   props:{},
   data(){
     return{
-      title: 'Catalog'
+      title: 'Catalog',
+      model: ''
     }
   },
   computed:{
@@ -66,6 +76,13 @@ name: "v-catalog",
       position: absolute;
       top: 10px;
       right: 10px;
+      padding: $padding*2;
+      border: solid 1px blue;
+    }
+    &__link_to_textfield{
+      position: absolute;
+      top: 10px;
+      right: 156px;
       padding: $padding*2;
       border: solid 1px blue;
     }
