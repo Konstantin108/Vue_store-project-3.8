@@ -1,11 +1,5 @@
 <template>
   <div class="v-catalog">
-    <v-select
-        :categories="categories"
-        @select="sortByCategories"
-        :selected="selected"
-    >
-    </v-select>
     <v-textfield
         v-model="model"
         label="Placeholder"
@@ -16,6 +10,36 @@
       <div class="v-catalog__link_to_cart">Cart: {{ CART.length }}</div>
     </router-link>
     <h1>{{title}}</h1>
+    <div class="filters">
+      <v-select
+          :categories="categories"
+          @select="sortByCategories"
+          :selected="selected"
+      >
+      </v-select>
+      <div class="range-slider">
+        <input
+            type="range"
+            min="0"
+            max="1000"
+            step="10"
+            v-model.number="minPrice"
+            @change="setRangeSlider"
+        >
+        <input
+            type="range"
+            min="0"
+            max="1000"
+            step="10"
+            v-model.number="maxPrice"
+            @change="setRangeSlider"
+        >
+      </div>
+      <div class="range-values">
+        <p>min: {{minPrice}}p.</p>
+        <p>max: {{maxPrice}}p.</p>
+      </div>
+    </div>
     <div class="v-catalog__list">
       <v-catalog-item
           v-for="product in filteredProducts"
@@ -52,7 +76,9 @@ name: "v-catalog",
         {name: "women's clothing", value: 'women'},
       ],
       selected: 'All clothes',
-      sortedProducts: []
+      sortedProducts: [],
+      minPrice: 0,
+      maxPrice: 1000
     }
   },
   computed:{
@@ -85,6 +111,13 @@ name: "v-catalog",
         }
       })
       this.selected = category.name
+    },
+    setRangeSlider(){
+      if(this.minPrice > this.maxPrice){
+        let tmp = this.maxPrice;
+        this.maxPrice = this.minPrice;
+        this.minPrice = tmp;
+      }
     }
   },
   mounted() {
@@ -119,5 +152,28 @@ name: "v-catalog",
       border: solid 1px blue;
     }
   }
-
+  .range-slider{
+    width: 200px;
+    margin: auto 16px;
+    text-align: center;
+    position: relative;
+  }
+  .range-slider svg, .range-slider input[type=range]{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+  }
+  input[type=range]::-webkit-slider-thumb{
+    z-index: 2;
+    position: relative;
+    top: 2px;
+    margin-top: -7px;
+  }
+  .range-values{
+    width: 210px;
+  }
+  .filters{
+    display: flex;
+    justify-content: space-around;
+  }
 </style>
