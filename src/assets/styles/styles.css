@@ -14,4 +14,27 @@
   color: #4d984d;
 }
 
+.categories {
+  position: absolute;
+  top: 38px;
+}
+
+.category {
+  padding: 8px 16px;
+  width: 200px;
+  background: white;
+  margin-bottom: 2px;
+  color: #4d984d;
+  border-radius: 4px;
+  outline: none;
+  border: 1px solid #4d984d;
+  cursor: pointer;
+  transition: 0.1s;
+}
+
+.category:hover {
+  background: #4d984d;
+  color: white;
+}
+
 /*# sourceMappingURL=styles.css.map */

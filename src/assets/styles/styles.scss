@@ -15,3 +15,25 @@
   background: white;
   color: $green-bg;
 }
+
+.categories{
+  position: absolute;
+  top: 38px;
+}
+.category{
+  padding: $padding $padding*2;
+  width: 200px;
+  background: white;
+  margin-bottom: 2px;
+  color: $green-bg;
+  border-radius: $radius;
+  outline: none;
+  border: 1px solid $green-bg;
+  cursor: pointer;
+  transition: .1s;
+}
+
+.category:hover{
+  background: $green-bg;
+  color: white;
+}
