@@ -15,3 +15,9 @@
  - Запускаем терминал, выполняем команду npm install -g json-server
 
  - Создаём в корневой папке проекта файл db.json и заполняем данными из файла json-sever_readme.txt
+
+ - Открываем файл package.json, находим объект "dependencies", добавляем свойство "material-design-icons-iconfont": "^5.0.1"
+
+ - Запускаем терминал, выполняем команду npm install
+
+ - В файле main.js импортируем модуль import 'material-design-icons-iconfont'

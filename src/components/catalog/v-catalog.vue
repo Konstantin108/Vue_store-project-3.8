@@ -102,21 +102,25 @@ name: "v-catalog",
     addToCart(data){
         this.ADD_TO_CART(data)
     },
-    sortByCategories(category){
-      this.sortedProducts = [];
-      let vm = this;
-      this.PRODUCTS.map(function (item){
-        if(item.category === category.name){
-          vm.sortedProducts.push(item)
-        }
-      })
-      this.selected = category.name
-    },
     setRangeSlider(){
       if(this.minPrice > this.maxPrice){
         let tmp = this.maxPrice;
         this.maxPrice = this.minPrice;
         this.minPrice = tmp;
+      }
+      this.sortByCategories()
+    },
+    sortByCategories(category){
+      let vm = this;
+      this.sortedProducts = [...this.PRODUCTS];
+      this.sortedProducts = this.sortedProducts.filter(function (item){
+        return item.price >= vm.minPrice && item.price <= vm.maxPrice
+      })
+      if(category){
+        this.sortedProducts = this.sortedProducts.filter(function (e){
+          vm.selected = category.name
+          return e.category === category.name
+        })
       }
     }
   },
@@ -124,6 +128,7 @@ name: "v-catalog",
     this.GET_PRODUCTS_FROM_API()
     .then((response) => {
       console.log('data is loaded');
+      this.sortByCategories()
     })
   }
 }
@@ -143,13 +148,7 @@ name: "v-catalog",
       right: 10px;
       padding: $padding*2;
       border: solid 1px blue;
-    }
-    &__link_to_textfield{
-      position: absolute;
-      top: 10px;
-      right: 156px;
-      padding: $padding*2;
-      border: solid 1px blue;
+      border-radius: 8px;
     }
   }
   .range-slider{

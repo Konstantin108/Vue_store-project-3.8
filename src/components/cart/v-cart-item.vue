@@ -59,6 +59,7 @@ name: "v-cart-item",
 <style lang="scss">
   .v-cart-item{
     display: flex;
+    border-radius: 8px;
     justify-content: space-between;
     flex-wrap: nowrap;
     align-items: center;
@@ -68,6 +69,7 @@ name: "v-cart-item",
     margin-bottom: $margin*2;
     &__image{
       width: 160px;
+      border-radius: 8px;
     }
 
     .quantity__btn{
