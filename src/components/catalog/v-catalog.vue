@@ -84,7 +84,8 @@ name: "v-catalog",
   computed:{
     ...mapGetters([
         'PRODUCTS',
-        'CART'
+        'CART',
+        'SEARCH_VALUE'
     ]),
     filteredProducts(){
       if(this.sortedProducts.length){
@@ -122,13 +123,29 @@ name: "v-catalog",
           return e.category === category.name
         })
       }
+    },
+    sortProductsBySearchValue(value){
+      this.sortedProducts = [...this.PRODUCTS];
+      if(value){
+        this.sortedProducts = this.sortedProducts.filter(function (item){
+          return item.name.toLowerCase().includes(value.toLowerCase())
+        })
+      }else{
+        this.sortedProducts = this.PRODUCTS;
+      }
+    }
+  },
+  watch:{
+    SEARCH_VALUE(){
+      this.sortProductsBySearchValue(this.SEARCH_VALUE)
     }
   },
   mounted() {
     this.GET_PRODUCTS_FROM_API()
     .then((response) => {
       console.log('data is loaded');
-      this.sortByCategories()
+      this.sortByCategories();
+      this.sortProductsBySearchValue(this.SEARCH_VALUE);
     })
   }
 }
@@ -149,6 +166,7 @@ name: "v-catalog",
       padding: $padding*2;
       border: solid 1px blue;
       border-radius: 8px;
+      top: 90px;
     }
   }
   .range-slider{

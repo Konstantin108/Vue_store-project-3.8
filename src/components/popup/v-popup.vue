@@ -86,7 +86,7 @@ export default {
     background-color: white;
     box-shadow: 0 0 17px 0 #e7e7e7;
     border-radius: 8px;
-    z-index: 2;
+    z-index: 4;
     &__header, &__footer{
       display: flex;
       justify-content: space-between;
