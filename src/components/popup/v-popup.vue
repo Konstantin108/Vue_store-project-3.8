@@ -52,7 +52,7 @@ export default {
     },
     closePopup(){
       this.$emit('closePopup')
-    }
+    },
   },
   mounted(){
     let vm = this;
@@ -68,7 +68,6 @@ export default {
 
 <style lang="scss">
 .popup_wrapper{
-  background-color: rgba(128, 128, 128, 0.63);
   display: flex;
   justify-content: center;
   align-items: center;

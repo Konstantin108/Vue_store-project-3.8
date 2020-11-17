@@ -24,6 +24,7 @@
         :src=" require('../../assets/images/' + product_data.image) "
         alt="img"
         class="v-catalog-item__image"
+        @click="productClick"
     >
     <p class="v-catalog-item__name">{{product_data.name}}</p>
     <p class="v-catalog-item__price">price: {{product_data.price}}р.</p>
@@ -65,6 +66,9 @@ export default {
   },
   computed: {},
   methods: {
+    productClick(){
+      this.$emit('productClick', this.product_data.article)
+    },
     showPopupInfo(){
       this.isInfoPopupVisible = true
     },
