@@ -55,7 +55,6 @@
 
 <script>
 import vCatalogItem from './v-catalog-item'
-import vTextfield from '../v-textfield'
 import vSelect from '../v-select'
 
 import {mapActions, mapGetters} from 'vuex'
@@ -63,7 +62,6 @@ export default {
 name: "v-catalog",
   components:{
     vCatalogItem,
-    vTextfield,
     vSelect
   },
   props:{},

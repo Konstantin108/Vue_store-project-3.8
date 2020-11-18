@@ -1,5 +1,8 @@
 <template>
   <div class="v-product-page">
+    <router-link :to="{name: 'cart', params: {cart_data: CART}}">
+      <div class="v-catalog__link_to_cart">Cart: {{ CART.length }}</div>
+    </router-link>
     <img
         v-if="product.image"
         :src=" require('../../assets/images/' + product.image) "
@@ -29,7 +32,8 @@ export default {
   },
   computed:{
     ...mapGetters([
-        'PRODUCTS'
+        'PRODUCTS',
+        'CART'
     ]),
     product(){
       let result = {}

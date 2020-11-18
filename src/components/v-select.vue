@@ -40,20 +40,11 @@ export default {
   computed:{
 
   },
- // mounted(){
-  //  document.addEventListener('click', this.hideSelect.bind(this), true)
-  //},
- // beforeDestroy() {
-  //  document.removeEventListener('click', this.hideSelect)
- // },
   methods:{
     selectOption(category){
       this.$emit('select', category)
       this.areOptionsVisible = false
     },
-    //hideSelect(){
-    //  this.areOptionsVisible = false
-    //}
   }
 }
 </script>
